@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>UPDATE</title>
+    <title>EDIT</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<th>辅导员</th>
   			<th>地区</th>
   		</tr>
-  		<form action="/Spring-learning/update" method="post" onsubmit="return check()" name="fr2">
+  		<form action="/Spring-learning/update" method="post" onsubmit="return check()" name="update">
 			<tr>
 				<td><input type="text" name = "id" value = "${student.id}"></td>
 				<td><input type="text" name = "sname" value = "${student.sname}"></td>
@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		
   		<script>
   			function check(){
-				if(fr2.sname.value==""||fr2.sid.value==""||fr2.profession.value==""||fr2.tname==""||fr2.area.value==""){
+				if(update.sname.value==""||update.sid.value==""||update.profession.value==""||update.tname==""||update.area.value==""){
 					alert("请填写所有表单数据!");
 				return false;
 				}

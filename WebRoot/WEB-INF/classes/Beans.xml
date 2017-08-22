@@ -14,7 +14,7 @@
 		<property name="password" value="741236985qcz"/>
    </bean>
 
-	<bean id="studentDaoImpl" class="com.Test.DaoImpl.StudentsDaoImpl">
+	<bean id="studentsService" class="com.Test.Service.ServiceImpl.StudentsServiceImpl">
 		<constructor-arg ref="dataSource"/>
 	</bean>
 	

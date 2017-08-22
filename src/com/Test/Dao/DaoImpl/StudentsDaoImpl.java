@@ -1,5 +1,6 @@
-package com.Test.DaoImpl;
+package com.Test.Dao.DaoImpl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -16,6 +17,7 @@ public class StudentsDaoImpl implements StudentsDao{
 	private JdbcTemplate jdbcTemplate;
 	
 	private List<Student> studentsInfo;
+	
 	public StudentsDaoImpl(DataSource dataSource){
 		this.dataSourse = dataSource;
 		this.jdbcTemplate = new JdbcTemplate(this.dataSourse);
@@ -48,25 +50,34 @@ public class StudentsDaoImpl implements StudentsDao{
 	public void update(Student student) {
 		// TODO Auto-generated method stub
 		String sql = "UPDATE studenttable set sid = ?,  sname = ?, tname = ?, profession = ?, area = ? WHERE id = ?";
-		jdbcTemplate.update(sql,student.getSid(),student.getSname(),student.getTname(),student.getProfession(),student.getArea(),student.getId());
+		jdbcTemplate.update(sql,student.getSid(),transfer(student.getSname()),transfer(student.getTname()),transfer(student.getProfession()),transfer(student.getArea()),student.getId());
 		this.studentsInfo.remove(student.getId() - 1);
 		this.studentsInfo.add(student);
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Student student) {
 		// TODO Auto-generated method stub
 		String sql = "DELETE studenttable WHERE id = ?";
-		jdbcTemplate.update(sql, id);
-		this.studentsInfo.remove(id);
+		jdbcTemplate.update(sql, student.getId());
+		this.studentsInfo.remove(student.getId());
 	}
 
 	@Override
 	public void add(Student student) {
 		// TODO Auto-generated method stub
 		String sql = "INSERT INTO studenttable (id,sid,sname,tname,profession,area) values (?,?,?,?,?,?)";
-		jdbcTemplate.update(sql, student.getId(),student.getSid(),student.getSname(),student.getTname(),student.getProfession(),student.getArea());
+		jdbcTemplate.update(sql, student.getId(),student.getSid(),transfer(student.getSname()),transfer(student.getTname()),transfer(student.getProfession()),transfer(student.getArea()));
 		this.studentsInfo.add(student);
 	}
 
+	private String transfer(String str){
+		try {
+			return new String(str.getBytes("ISO-8859-1"),"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
 }

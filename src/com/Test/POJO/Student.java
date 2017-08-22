@@ -10,7 +10,7 @@ public class Student {
 	}
 	
 	public void setSid(int sid){
-		this.sid = id;
+		this.sid = sid;
 	}
 	
 	public void setSname(String sname){
