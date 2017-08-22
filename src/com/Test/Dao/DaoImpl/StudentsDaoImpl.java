@@ -58,9 +58,9 @@ public class StudentsDaoImpl implements StudentsDao{
 	@Override
 	public void delete(Student student) {
 		// TODO Auto-generated method stub
-		String sql = "DELETE studenttable WHERE id = ?";
+		String sql = "DELETE FROM studenttable WHERE id = ?";
+		this.studentsInfo.remove(student.getId()-1);
 		jdbcTemplate.update(sql, student.getId());
-		this.studentsInfo.remove(student.getId());
 	}
 
 	@Override

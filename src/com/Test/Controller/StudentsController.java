@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,19 +33,19 @@ public class StudentsController {
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String updateInfo(@ModelAttribute("SpringWeb") Student student,ModelMap model){
-		if(null == student.getArea()){
-			student = this.students.get(student.getId());
-			model.addAttribute("student",student);
-			return "update";
-		}else{
-			this.studentsService.update(student);
-			return "index";
-		}
+		student = this.students.get(student.getId());
+		model.addAttribute("student",student);
+		return "update";
 	}
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String deleteInfo(@ModelAttribute("SpringWeb") int id){
-		this.studentsService.delete(id);
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String saveInfo(@ModelAttribute("SpringWeb")Student student,ModelMap model){
+		this.studentsService.update(student);
+		return "save";
+	}
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public String deleteInfo(@PathVariable String id){
+		this.studentsService.delete(Integer.parseInt(id)-1);
 		return "index";
 	}
 	
@@ -54,9 +55,9 @@ public class StudentsController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String searchInfo(@ModelAttribute("SpringWeb") Student student, ModelMap model){
-		Student result = this.studentsService.search(student.getId());
+	@RequestMapping(value = "/search/{id}", method = RequestMethod.GET)
+	public String searchInfo(@PathVariable String id, ModelMap model){
+		Student result = this.studentsService.search(Integer.parseInt(id));
 		model.addAttribute("result", result);
 		return "search";
 	}

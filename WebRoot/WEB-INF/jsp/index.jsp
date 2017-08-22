@@ -28,8 +28,8 @@ int maxId = 0;
   
   <body>
   <h1>学生信息记录</h1>
-  <mvc:form action = "/Spring-learning/search">
-  	<input type = "text" value = "请输入学生学号"></input>
+  <mvc:form action = "/Spring-learning/search/${sid}">
+  	<input type = "text" value = "请输入学生学号" name = "sid"></input>
   	<input type = "submit" value = "搜索"></input>
   </mvc:form>
     <table border="1" width="100%">
@@ -85,7 +85,7 @@ int maxId = 0;
 		return true;
 	}
 	function deleteline(id){
-		document.forms.edit.action ="/Spring-learning/delete?id="+id;
+		document.forms.edit.action ="/Spring-learning/delete/"+id;
 		document.forms.edit.submit();
 	}
 	function updateline(id){

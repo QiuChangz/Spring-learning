@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <button onclick = "javascript:history.back();">返回</button>
     <table border="1" width="100%">
     	<tr>
     		<th>Id</th>
@@ -43,8 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>"${result.area}"/></td>
 				<td width="100">
 					<mvc:form method="post"  name="edit" action = "/Spring-learning/index">
-					     <input type="button" name="delete" value="删除" onclick="deleteline(${result.id})" >
-					     <input type="button" name="update" value="编辑" onclick="updateline(${result.id})" >
+					     <input type="button" name="delete" value="删除" onclick="deleteline(${result.id})" />
+					     <input type="button" name="update" value="编辑" onclick="updateline(${result.id})" />
 					 </mvc:form>
 				</td>
     		</tr>

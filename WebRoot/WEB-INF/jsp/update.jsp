@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<th>辅导员</th>
   			<th>地区</th>
   		</tr>
-  		<form action="/Spring-learning/update" method="post" onsubmit="return check()" name="update">
+  		<form action="/Spring-learning/save" method="post" onsubmit="return check()" name="update">
 			<tr>
 				<td><input type="text" name = "id" value = "${student.id}"></td>
 				<td><input type="text" name = "sname" value = "${student.sname}"></td>
