@@ -32,13 +32,13 @@ public class StudentsDaoImpl implements StudentsDao{
 	}
 
 	@Override
-	public Student Search(int id){
+	public Student Search(int sid){
 		// TODO Auto-generated method stub
-		if(id > this.studentsInfo.size()||id <= 0){
+		if(sid <= 0){
 			return null;
 		}else{
 			for(Student record: studentsInfo){
-				if(record.getId() == id){
+				if(record.getSid() == sid){
 					return record;
 				}
 			}

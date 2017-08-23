@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
   		<form action="/Spring-learning/save" method="post" onsubmit="return check()" name="update">
 			<tr>
-				<td><input type="text" name = "id" value = "${student.id}"></td>
+				<td><input type="hidden" name = "id" value = "${student.id}">${student.id}</td>
 				<td><input type="text" name = "sname" value = "${student.sname}"></td>
 				<td><input type="text" name = "sid" value = "${student.sid}"></td>
 				<td><input type="text" name = "profession" value = "${student.profession}"></td>

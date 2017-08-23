@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="mvc"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,9 +28,9 @@ int maxId = 0;
   
   <body>
   <h1>学生信息记录</h1>
-  <mvc:form action = "/Spring-learning/search/${sid}">
+  <mvc:form name = "search" method = "get">
   	<input type = "text" value = "请输入学生学号" name = "sid"></input>
-  	<input type = "submit" value = "搜索"></input>
+  	<input type = "button" value = "搜索" onclick="checksid()"></input>
   </mvc:form>
     <table border="1" width="100%">
     	<tr>
@@ -51,7 +51,7 @@ int maxId = 0;
 				<td><c:out value="${row.tname}"/></td>
 				<td><c:out value="${row.area}"/></td>
 				<td width="100">
-					<mvc:form method="post"  name="edit" action = "/Spring-learning/index">
+					<mvc:form method="get"  name="edit" action = "/Spring-learning/index">
 					     <input type="button" name="delete" value="删除" onclick="deleteline(${row.id})" >
 					     <input type="button" name="update" value="编辑" onclick="updateline(${row.id})" >
 					 </mvc:form>
@@ -77,6 +77,13 @@ int maxId = 0;
 </html>
 <script type="text/javascript">
 
+	function checksid(sid){
+		if(search.sid.value == ""){
+			alert("不合法学号，请重试！");
+		}else{
+			window.open('search/'+search.sid.value,'RESULT','fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');
+		}
+	}
 	function check(){
 		if(add.sname.value==""||add.sid.value==""||add.profession.value==""||add.tname==""||add.area.value==""){
 			alert("请填写所有表单数据!");
@@ -89,6 +96,6 @@ int maxId = 0;
 		document.forms.edit.submit();
 	}
 	function updateline(id){
-		window.open('update?id='+id,'EDIT','fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');
+		window.open('update/'+id,'EDIT','fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');
 	}
 </script>

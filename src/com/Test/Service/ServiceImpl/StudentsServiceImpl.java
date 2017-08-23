@@ -42,9 +42,9 @@ public class StudentsServiceImpl implements StudentsService{
 	}
 
 	@Override
-	public Student search(int id) {
+	public Student search(int sid) {
 		// TODO Auto-generated method stub
-		return this.studentsDao.Search(id);
+		return this.studentsDao.Search(sid);
 	}
 
 }

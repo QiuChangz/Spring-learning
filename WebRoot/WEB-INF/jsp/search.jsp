@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <button onclick = "javascript:history.back();">返回</button>
+  <button onclick = "javascript:window.close();">返回</button>
     <table border="1" width="100%">
     	<tr>
     		<th>Id</th>
@@ -36,14 +36,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<th>备注</th>
     	</tr>
     		<tr>
-    			<td>"${result.id}"</td>
-				<td>"${result.sname}"/></td>
-				<td>"${result.sid}"/></td>
-				<td>"${result.profession}"/></td>
-				<td>"${result.tname}"/></td>
-				<td>"${result.area}"/></td>
+    			<td>${result.id}</td>
+				<td>${result.sname}</td>
+				<td>${result.sid}</td>
+				<td>${result.profession}</td>
+				<td>${result.tname}</td>
+				<td>${result.area}</td>
 				<td width="100">
-					<mvc:form method="post"  name="edit" action = "/Spring-learning/index">
+					<mvc:form method="get"  name="edit" action = "/Spring-learning/index">
 					     <input type="button" name="delete" value="删除" onclick="deleteline(${result.id})" />
 					     <input type="button" name="update" value="编辑" onclick="updateline(${result.id})" />
 					 </mvc:form>
@@ -52,3 +52,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</table>
   </body>
 </html>
+<script type="text/javascript">
+	function deleteline(id){
+		document.forms.edit.action ="/Spring-learning/delete/"+id;
+		document.forms.edit.submit();
+	}
+	function updateline(id){
+		window.open('update/'+id,'EDIT','fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');
+	}
+</script>

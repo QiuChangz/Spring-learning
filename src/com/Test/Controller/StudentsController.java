@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.Test.Service.ServiceImpl.StudentsServiceImpl;
 import com.Test.POJO.Student;
@@ -21,6 +22,7 @@ public class StudentsController {
 
 	private StudentsService studentsService;
 	private List<Student> students;
+	private ModelAndView view = new ModelAndView();
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String getAll(ModelMap model){
@@ -31,9 +33,9 @@ public class StudentsController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String updateInfo(@ModelAttribute("SpringWeb") Student student,ModelMap model){
-		student = this.students.get(student.getId());
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+	public String updateInfo(@PathVariable String id,ModelMap model){
+		Student student = this.students.get(Integer.parseInt(id)-1);
 		model.addAttribute("student",student);
 		return "update";
 	}
@@ -43,22 +45,30 @@ public class StudentsController {
 		this.studentsService.update(student);
 		return "save";
 	}
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-	public String deleteInfo(@PathVariable String id){
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public ModelAndView deleteInfo(@PathVariable String id){
 		this.studentsService.delete(Integer.parseInt(id)-1);
-		return "index";
+		view.setViewName("redirect:http://localhost:8081/Spring-learning/index");
+		return view;
+	}
+	
+	@RequestMapping(value = "/search/{sid}", method = RequestMethod.GET)
+	public String searchInfo(@PathVariable String sid, ModelMap model){
+		Student result = this.studentsService.search(Integer.parseInt(sid));
+		if(null==result){
+			return "error";
+		}else{
+			model.addAttribute("result", result);
+			return "search";
+		}
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addInfo(@ModelAttribute("SpringWeb") Student student){
+	public ModelAndView addInfo(@ModelAttribute("SpringWeb") Student student){
 		this.studentsService.add(student);
-		return "index";
+		view.setViewName("redirect:http://localhost:8081/Spring-learning/index");
+		return view;
 	}
 	
-	@RequestMapping(value = "/search/{id}", method = RequestMethod.GET)
-	public String searchInfo(@PathVariable String id, ModelMap model){
-		Student result = this.studentsService.search(Integer.parseInt(id));
-		model.addAttribute("result", result);
-		return "search";
-	}
+	
 }
