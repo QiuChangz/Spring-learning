@@ -78,7 +78,7 @@ int maxId = 0;
 <script type="text/javascript">
 
 	function checksid(sid){
-		if(search.sid.value == ""){
+		if(search.sid.value == ""||search.sid.value.length < 9||search.sid.value.length >= 12){
 			alert("不合法学号，请重试！");
 		}else{
 			window.open('search/'+search.sid.value,'RESULT','fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');

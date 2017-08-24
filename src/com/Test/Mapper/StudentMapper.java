@@ -1,5 +1,6 @@
 package com.Test.Mapper;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -21,4 +22,14 @@ public class StudentMapper implements RowMapper<Student>{
 		student.setArea(result.getString("area"));
 		return student;
 	}
+	
+//	private String transfer(String str){
+//		try {
+//			return new String(str.getBytes("ISO-8859-1"),"UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println(e.getMessage());
+//			return null;
+//		}
+//	}
 }

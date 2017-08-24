@@ -48,8 +48,7 @@ public class StudentsController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public ModelAndView deleteInfo(@PathVariable String id){
 		this.studentsService.delete(Integer.parseInt(id)-1);
-		view.setViewName("redirect:http://localhost:8081/Spring-learning/index");
-		return view;
+		return refresh();
 	}
 	
 	@RequestMapping(value = "/search/{sid}", method = RequestMethod.GET)
@@ -66,9 +65,13 @@ public class StudentsController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView addInfo(@ModelAttribute("SpringWeb") Student student){
 		this.studentsService.add(student);
-		view.setViewName("redirect:http://localhost:8081/Spring-learning/index");
-		return view;
+		return refresh();
 	}
 	
+	@RequestMapping(value = "/back", method = RequestMethod.POST)
+	public ModelAndView refresh(){
+		this.view.setViewName("redirect:http://localhost:8081/Spring-learning/index");
+		return this.view;
+	}
 	
 }

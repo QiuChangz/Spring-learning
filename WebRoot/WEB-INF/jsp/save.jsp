@@ -25,8 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 	修改成功！
-	<form>
-		<input type = "button" value = "确认" onclick = "javascript:window.close()">
+	<form  action="/back">
+		<input type = "submit" value = "确认" onclick = "javascript:window.close()">
 	</form>
   </body>
 </html>
