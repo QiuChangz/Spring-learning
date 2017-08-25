@@ -1,6 +1,5 @@
 package com.Test.Dao.DaoImpl;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -70,14 +69,4 @@ public class StudentsDaoImpl implements StudentsDao{
 		jdbcTemplate.update(sql, student.getId(),student.getSid(),student.getSname(),student.getTname(),student.getProfession(),student.getArea());
 		this.studentsInfo.add(student);
 	}
-
-//	private String transfer(String str){
-//		try {
-//			return new String(str.getBytes("ISO-8859-1"),"UTF-8");
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println(e.getMessage());
-//			return null;
-//		}
-//	}
 }

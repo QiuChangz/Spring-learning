@@ -17,15 +17,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   </head>
   
   <body>
   <button onclick = "javascript:window.close();">返回</button>
-    <table border="1" width="100%">
+    <table width="100%" class="table table-hover">
     	<tr>
     		<th>Id</th>
     		<th>学生姓名</th>
@@ -44,8 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>${result.area}</td>
 				<td width="100">
 					<mvc:form method="get"  name="edit" action = "/Spring-learning/index">
-					     <input type="button" name="delete" value="删除" onclick="deleteline(${result.id})" />
-					     <input type="button" name="update" value="编辑" onclick="updateline(${result.id})" />
+					     <input type="button" name="delete" value="删除" class="btn btn-default onclick="deleteline(${result.id})" />
+					     <input type="button" name="update" value="编辑" class="btn btn-default onclick="updateline(${result.id})" />
 					 </mvc:form>
 				</td>
     		</tr>

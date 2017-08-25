@@ -20,6 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -28,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h1>学生信息编辑</h1>
-  	<table border="1" width="100%">
+  	<table width="100%" class="table table-hover">
   		<tr>
   			<th>id</th>
   			<th>name</th>
@@ -46,10 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td><input type="text" name = "tname" value = "${student.tname}"></td>
 				<td><input type="text" name = "area" value = "${student.area}"></td>
 			</tr>
-			<input type="submit" name="save" value="保存" >
+			<input type="submit" name="save" value="保存" class="btn btn-default">
   		</form>
   		
-  		<script>
+  		<script type="text/javascript">
   			function check(){
 				if(update.sname.value==""||update.sid.value==""||update.profession.value==""||update.tname==""||update.area.value==""){
 					alert("请填写所有表单数据!");
