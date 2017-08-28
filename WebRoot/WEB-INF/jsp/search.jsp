@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <button onclick = "javascript:window.close();">返回</button>
+
     <table width="100%" class="table table-hover">
     	<tr>
     		<th>Id</th>
@@ -50,6 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</td>
     		</tr>
     	</table>
+    	<button class="btn btn-default" onclick = "javascript:window.close();">返回</button>
   </body>
 </html>
 <script type="text/javascript">

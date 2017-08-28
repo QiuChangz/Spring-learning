@@ -35,12 +35,12 @@ int maxId = 0;
     <table width="100%" class="table table-hover">
     	<thead>
     		<tr>
-    			<th>Id</th>
-    			<th>学生姓名</th>
-    			<th>学号</th>
-    			<th>专业</th>
-    			<th>辅导员</th>
-    			<th>地区</th>
+    			<th width="10%">Id</th>
+    			<th width="10%">学生姓名</th>
+    			<th width="20%">学号</th>
+    			<th width="20%">专业</th>
+    			<th width="10%">辅导员</th>
+    			<th width="20%">地区</th>
     			<th>备注</th>
     		</tr>
     	</thead>
@@ -68,7 +68,7 @@ int maxId = 0;
   				<td><input type="hidden" name ="id" size=2 value=<%=maxId+1 %>><%=maxId+1 %></td>
   				<td><input type="text" name="sname" size="4" maxlength="4"></td>
   				<td><input type="text" name="sid" size="9" maxlength="9"></td>
-  				<td><input type="text" name="profession" size="9" maxlength="10"></td>
+  				<td><input type="text" name="profession" size="15"></td>
   				<td><input type="text" name="tname" size="4" maxlength="4"></td>
   				<td><input type="text" name="area" size="5" maxlength="5"></td>
   				<td><input type="submit" class="btn btn-default"  name="add" value="添加"></td>
@@ -81,10 +81,10 @@ int maxId = 0;
 <script type="text/javascript">
 
 	function checksid(sid){
-		if(search.sid.value == ""||search.sid.value.length < 9||search.sid.value.length >= 12){
+		if(search.sid.value.length < 9||search.sid.value.length >= 12){
 			alert("不合法学号，请重试！");
 		}else{
-			window.open('search/'+search.sid.value,'RESULT','fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');
+			window.open('search/'+search.sid.value,'RESULT','toolbar=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=500,height=100');
 		}
 	}
 	function check(){
@@ -99,6 +99,6 @@ int maxId = 0;
 		document.forms.edit.submit();
 	}
 	function updateline(id){
-		window.open('update/'+id,'EDIT','fullscreen=yes,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');
+		window.open('update/'+id,'EDIT','toolbar=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no, copyhistory=no，width=1000,height=500');
 	}
 </script>
